@@ -1,0 +1,30 @@
+.login-wrap {
+    width: 500px;
+    margin: auto;
+}
+.login-wrap * {
+    box-sizing: border-box;
+}
+.login-wrap__body {
+    padding: 20px 50px;
+    border: 1px solid #ccc;
+}
+.login-wrap__input {
+    margin-bottom: 10px;
+}
+.login-wrap__info {
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+    align-items: center;
+}
+.login-wrap__submit {
+    width: 100%;
+    margin-top: 20px;
+}
+.login-wrap__foot {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
+}

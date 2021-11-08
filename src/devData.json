@@ -1,0 +1,34 @@
+{
+    "users": [
+        {
+            "name": "전동혁",
+            "email": "easthyuck@hunet.co.kr",
+            "id": "test01",
+            "pw": "password01"
+        },
+        {
+            "name": "성진희",
+            "email": "jinhees@hunet.co.kr",
+            "id": "test02",
+            "pw": "password02"
+        },
+        {
+            "name": "원재현",
+            "email": "dnjs02018@hunet.co.kr",
+            "id": "test03",
+            "pw": "password03"
+        },
+        {
+            "name": "전민경",
+            "email": "jmk@hunet.co.kr",
+            "id": "test04",
+            "pw": "password04"
+        },
+        {
+            "name": "서진",
+            "email": "suhjin700@hunet.co.kr",
+            "id": "test05",
+            "pw": "password05"
+        }
+    ]
+}
