@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import "../assets/css/Login.css";
+import "../assets/scss/login.scss";
 import { reg } from '../utils';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Login() {
     
     const [inputs, setInputs] = useState({
         id: "",
-        pw: "",
+        password: "",
     });
     
-    const { id, pw } = inputs;
+    const { id, password } = inputs;
     
     const onChange = (e) => {
         const { value, name } = e.target;
@@ -37,11 +37,11 @@ function Login() {
     };
     
     const chkPw = () => {
-        if(!pw){
+        if(!password){
             alert('비밀번호를 입력해주세요');
             return false;
-        } else if(pw.search(reg.pw.exp) < 0){
-            alert(reg.pw.desc);
+        } else if(password.search(reg.password.exp) < 0){
+            alert(reg.password.desc);
             return false;
         }
         
@@ -62,7 +62,7 @@ function Login() {
             })
             
             const user = result.find((user,index) => {
-                return (user.id === id && user.pw === pw);
+                return (user.id === id && user.password === password);
             })
             
             
@@ -76,49 +76,61 @@ function Login() {
     
     return (
         <div className="login-wrap">
-            <div className="login-wrap__head">
-                <h1 className="login-wrap__tit">Check Up 통합관리시스템</h1>
-            </div>
-            <div className="login-wrap__body">
-                <Form onSubmit={handleSubmit}>
-                    <div className="login-wrap__input">
-                        <Form.Control
-                            type="text"
-                            name="id"
-                            value={id}
-                            onChange={onChange}
-                            placeholder="ID"
-                        />
-                    </div>
-                    <div className="login-wrap__input">
-                        <Form.Control
-                            type="password"
-                            name="pw"
-                            value={pw}
-                            onChange={onChange}
-                            placeholder="비밀번호"
-                        />
-                    </div>
-                    <div className="login-wrap__info">
-                        <div className="login-wrap__check form-check">
-                            <Form.Check.Input type="checkbox" name="" id="check" />
-                            <Form.Check.Label htmlFor="check">아이디 저장</Form.Check.Label>
+            <Container>
+                <Row className="justify-content-center align-items-center">
+                    <Col xs lg="6" xl="5">
+                        <div className="login-wrap__head">
+                            <h1 className="login-wrap__tit mb-4 fs-3 text-center">
+                                Hunet Check Up 통합관리시스템
+                            </h1>
                         </div>
-                        <a href="" className="link-secondary">
-                            아이디/비밀번호찾기
-                        </a>
-                    </div>
-                    <Button type="submit" className="login-wrap__submit">
-                        로그인
-                    </Button>
-                </Form>
-            </div>
-            <div className="login-wrap__foot">
-                <p className="m-0">신규 운영자는 가입신청을 진행해 주세요</p>
-                <a href="" className="btn btn-outline-secondary">
-                    가입하기
-                </a>
-            </div>
+                        <div className="login-wrap__body">
+                            <Form onSubmit={handleSubmit}>
+                                <Form.Group className="login-wrap__input mb-3">
+                                    <Form.Control
+                                        type="text"
+                                        name="id"
+                                        value={id}
+                                        onChange={onChange}
+                                        placeholder="ID"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="login-wrap__input mb-3">
+                                    <Form.Control
+                                        type="password"
+                                        name="password"
+                                        value={password}
+                                        onChange={onChange}
+                                        placeholder="비밀번호"
+                                    />
+                                </Form.Group>
+                                <Form.Group
+                                    className="login-wrap__info mb-3"
+                                    controlId="saveId">
+                                    <Form.Check
+                                        type="checkbox"
+                                        // onChange={handleRemember}
+                                        // checked={isRemember}
+                                        label="아이디 저장"
+                                    />
+                                    <Link to="" className="link-secondary">
+                                        아이디/비밀번호찾기
+                                    </Link>
+                                </Form.Group>
+                                <Button type="submit" className="login-wrap__submit">
+                                    로그인
+                                </Button>
+                            </Form>
+                        </div>
+                        <div className="login-wrap__foot mt-3">
+                            <p className="m-0">신규 운영자는 가입신청을 진행해 주세요</p>
+                            <Link to="/join" className="btn btn-outline-secondary">
+                                가입하기
+                            </Link>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 }
